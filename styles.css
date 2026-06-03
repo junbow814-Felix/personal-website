@@ -164,7 +164,7 @@ a {
   gap: clamp(34px, 6vw, 68px);
   min-height: calc(128vh - 112px);
   overflow: hidden;
-  padding: clamp(28px, 4.8vw, 56px);
+  padding: clamp(16px, 2vw, 24px) clamp(28px, 4.8vw, 56px) clamp(28px, 4.8vw, 56px);
 }
 
 .overview-hero {
@@ -405,26 +405,26 @@ h3 {
 .photo-card {
   position: relative;
   display: grid;
-  width: min(100%, 390px);
+  width: min(100%, 332px);
   align-self: center;
   justify-self: center;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 32px;
+  border-radius: 27px;
   background:
     radial-gradient(circle at 58% 30%, rgba(255, 255, 255, 0.92), transparent 16rem),
     linear-gradient(150deg, rgba(255, 255, 255, 0.78), rgba(230, 235, 244, 0.46)),
     radial-gradient(circle at 78% 18%, rgba(80, 210, 255, 0.14), transparent 22rem);
   box-shadow: 0 28px 80px rgba(22, 35, 55, 0.13), var(--glass-shadow);
   backdrop-filter: blur(22px) saturate(170%);
-  padding: 14px;
+  padding: 12px;
 }
 
 .photo-card::before {
   position: absolute;
   inset: 1px;
   border: 1px solid rgba(255, 255, 255, 0.74);
-  border-radius: 31px;
+  border-radius: 26px;
   background:
     radial-gradient(circle at 18% 10%, rgba(255, 255, 255, 0.82), transparent 14rem),
     radial-gradient(circle at 86% 18%, rgba(80, 210, 255, 0.12), transparent 16rem);
@@ -449,7 +449,7 @@ h3 {
   width: 100%;
   aspect-ratio: 1 / 1.08;
   height: auto;
-  border-radius: 28px;
+  border-radius: 24px;
   margin-bottom: 0;
   object-fit: cover;
   object-position: 50% 35%;
@@ -460,28 +460,28 @@ h3 {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 14px;
+  gap: 12px;
   margin: 0;
-  padding: 22px 18px 16px;
+  padding: 19px 15px 14px;
 }
 
 .profile-name-row {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 
 .profile-name-row strong {
   color: var(--text);
-  font-size: clamp(28px, 3vw, 36px);
+  font-size: clamp(24px, 2.55vw, 31px);
   line-height: 1;
 }
 
 .verified-badge {
   position: relative;
   display: inline-flex;
-  width: 27px;
-  height: 27px;
+  width: 23px;
+  height: 23px;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
@@ -490,25 +490,25 @@ h3 {
 }
 
 .verified-badge::before {
-  width: 10px;
-  height: 6px;
-  border-bottom: 3px solid #ffffff;
-  border-left: 3px solid #ffffff;
+  width: 9px;
+  height: 5px;
+  border-bottom: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
   content: "";
   transform: rotate(-45deg) translate(1px, -1px);
 }
 
 .profile-card-body p {
-  max-width: 310px;
+  max-width: 264px;
   margin: 0;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.62;
 }
 
 .profile-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
   justify-content: space-between;
   margin-top: 2px;
@@ -516,11 +516,11 @@ h3 {
 
 .profile-stat {
   display: inline-flex;
-  min-height: 44px;
+  min-height: 38px;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   color: var(--text);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 800;
   min-width: 0;
 }
@@ -531,13 +531,13 @@ h3 {
 }
 
 .profile-stat strong {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.25;
 }
 
 .profile-contact {
   display: inline-flex;
-  min-height: 48px;
+  min-height: 41px;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.72);
@@ -545,9 +545,9 @@ h3 {
   background: rgba(29, 29, 31, 0.88);
   box-shadow: 0 14px 34px rgba(22, 35, 55, 0.16), var(--glass-shadow);
   color: #ffffff;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 850;
-  padding: 0 28px;
+  padding: 0 24px;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -589,10 +589,10 @@ h3 {
 
 .growth-timeline {
   position: relative;
-  max-width: 980px;
-  gap: 12px;
+  max-width: 900px;
+  gap: 6px;
   margin-inline: auto;
-  padding: 18px 0;
+  padding: 12px 0;
 }
 
 .growth-timeline::before {
@@ -624,15 +624,15 @@ h3 {
 .growth-timeline li {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr);
   gap: 0;
   align-items: center;
-  min-height: 190px;
+  min-height: 154px;
   overflow: visible;
   border: 0;
   background: transparent;
   box-shadow: none;
-  padding: 18px 0;
+  padding: 12px 0;
   opacity: 1;
   transform: translateY(0);
   animation: none;
@@ -651,31 +651,55 @@ h3 {
   grid-row: 1;
   z-index: 1;
   display: inline-flex;
-  width: 52px;
-  height: 52px;
+  width: 46px;
+  height: 46px;
   align-items: center;
   justify-content: center;
   justify-self: center;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 999px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 0 0 8px rgba(0, 113, 227, 0.05), 0 12px 28px rgba(22, 35, 55, 0.12);
+  box-shadow: 0 0 0 6px rgba(0, 113, 227, 0.045), 0 10px 22px rgba(22, 35, 55, 0.1);
   backdrop-filter: blur(12px) saturate(150%);
 }
 
 .timeline-logo img {
   display: block;
-  width: 74%;
-  height: 74%;
+  width: 86%;
+  height: 86%;
+  border-radius: 9px;
   object-fit: contain;
 }
 
-.timeline-logo-text {
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0;
+.timeline-logo-square img {
+  object-fit: contain;
+}
+
+.timeline-logo-fill img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.timeline-logo-fill {
+  border-color: transparent;
+  background: transparent;
+}
+
+.timeline-logo-contain img {
+  width: 86%;
+  height: 86%;
+  border-radius: 0;
+}
+
+.timeline-logo-stu {
+  background: linear-gradient(145deg, #d9bf58, #b89626);
+}
+
+.timeline-logo-xhs {
+  background: #ff2442;
 }
 
 .growth-timeline li::after {
@@ -685,12 +709,12 @@ h3 {
 .growth-timeline time {
   grid-column: 1;
   justify-self: end;
-  margin-right: 24px;
+  margin-right: 18px;
   border: 1px solid rgba(255, 255, 255, 0.74);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.58);
   box-shadow: var(--glass-shadow);
-  padding: 7px 11px;
+  padding: 6px 9px;
 }
 
 .growth-timeline li > div {
@@ -698,13 +722,14 @@ h3 {
   grid-column: 3;
   overflow: hidden;
   width: 100%;
+  max-width: 400px;
   border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 22px;
+  border-radius: 18px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.62)),
     var(--surface-strong);
-  box-shadow: 0 16px 44px rgba(22, 35, 55, 0.08), var(--glass-shadow);
-  padding: 18px;
+  box-shadow: 0 12px 34px rgba(22, 35, 55, 0.07), var(--glass-shadow);
+  padding: 14px;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -723,12 +748,13 @@ h3 {
   grid-column: 3;
   justify-self: start;
   margin-right: 0;
-  margin-left: 24px;
+  margin-left: 18px;
 }
 
 .growth-timeline li:nth-child(even) > div {
   grid-column: 1;
   grid-row: 1;
+  justify-self: end;
 }
 
 .growth-timeline li > div:hover {
@@ -777,27 +803,27 @@ h3 {
 .growth-timeline time,
 .case-grid span {
   color: var(--accent);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 850;
 }
 
 .growth-timeline h3 {
-  margin-bottom: 6px;
-  font-size: 17px;
+  margin-bottom: 5px;
+  font-size: 15px;
   line-height: 1.22;
 }
 
 .growth-timeline p {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.68;
+  font-size: 13px;
+  line-height: 1.62;
 }
 
 .timeline-role {
   display: block;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   color: var(--accent);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 850;
   line-height: 1.3;
 }
@@ -936,9 +962,10 @@ h3 {
   display: grid;
   grid-template-columns: 42px minmax(0, 1fr);
   gap: 14px;
-  min-height: 210px;
+  min-height: 190px;
+  align-content: center;
   border-radius: 24px;
-  padding: 22px;
+  padding: 24px;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -958,7 +985,13 @@ h3 {
   z-index: 1;
 }
 
+.skill-row > div {
+  display: grid;
+  gap: 11px;
+}
+
 .skill-row > span {
+  align-self: start;
   color: var(--accent);
   font-size: 13px;
   font-weight: 850;
@@ -967,7 +1000,7 @@ h3 {
 }
 
 .skill-row h3 {
-  margin-bottom: 10px;
+  margin: 0;
   font-size: 21px;
   line-height: 1.16;
 }
@@ -982,7 +1015,7 @@ h3 {
 .skill-row em {
   display: block;
   max-width: 100%;
-  margin-top: 14px;
+  margin: 0;
   border: 0;
   background: transparent;
   box-shadow: none;
@@ -1307,7 +1340,7 @@ a:focus-visible {
   }
 
   .photo-card {
-    width: min(100%, 360px);
+    width: min(100%, 306px);
   }
 
   .photo-card img {
@@ -1383,6 +1416,10 @@ a:focus-visible {
 
   .skill-row {
     grid-template-columns: 1fr;
+    min-height: auto;
+    align-content: start;
+    gap: 10px;
+    padding: 20px;
   }
 
   .skill-metrics,
@@ -1400,7 +1437,7 @@ a:focus-visible {
   }
 
   .photo-card {
-    width: min(100%, 330px);
+    width: min(100%, 281px);
   }
 
   .journey-cue {
@@ -1428,10 +1465,19 @@ a:focus-visible {
   .timeline-logo {
     grid-column: 1;
     justify-self: start;
-    width: 38px;
-    height: 38px;
-    margin-left: -10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    margin-left: -7px;
     margin-top: 2px;
+  }
+
+  .timeline-logo img {
+    border-radius: 7px;
+  }
+
+  .timeline-logo-fill img {
+    border-radius: 8px;
   }
 
   .growth-timeline time,
@@ -1446,7 +1492,8 @@ a:focus-visible {
   .growth-timeline li:nth-child(even) > div {
     grid-column: 2;
     grid-row: 2;
-    padding: 16px;
+    max-width: none;
+    padding: 13px;
   }
 }
 
