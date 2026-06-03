@@ -590,9 +590,9 @@ h3 {
 .growth-timeline {
   position: relative;
   max-width: 980px;
-  gap: 0;
+  gap: 12px;
   margin-inline: auto;
-  padding: 10px 0;
+  padding: 18px 0;
 }
 
 .growth-timeline::before {
@@ -627,11 +627,12 @@ h3 {
   grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
   gap: 0;
   align-items: center;
-  min-height: 168px;
+  min-height: 190px;
+  overflow: visible;
   border: 0;
   background: transparent;
   box-shadow: none;
-  padding: 0;
+  padding: 18px 0;
   opacity: 1;
   transform: translateY(0);
   animation: none;
@@ -676,6 +677,7 @@ h3 {
   position: relative;
   grid-column: 3;
   overflow: hidden;
+  width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.78);
   border-radius: 22px;
   background:
@@ -735,7 +737,6 @@ h3 {
   transition: opacity 220ms ease, transform 700ms ease;
 }
 
-.growth-timeline li:hover,
 .compact-list li:hover,
 .case-grid article:hover,
 .contact-card:hover,
@@ -745,7 +746,6 @@ h3 {
 }
 
 .glass-panel:hover::after,
-.growth-timeline li:hover::after,
 .compact-list li:hover::after,
 .case-grid article:hover::after,
 .contact-card:hover::after,
