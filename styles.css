@@ -333,7 +333,8 @@ h3 {
 }
 
 .journey-cue,
-.portfolio-cue {
+.portfolio-cue,
+.experience-cue {
   position: fixed;
   left: 50%;
   bottom: 32px;
@@ -349,13 +350,23 @@ h3 {
   transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
 }
 
+.experience-cue {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
 .journey-cue:hover,
-.portfolio-cue:hover {
+.portfolio-cue:hover,
+.experience-cue:hover {
   transform: translateX(-50%) translateY(-3px);
 }
 
 .journey-cue.is-hidden,
-.portfolio-cue.is-hidden {
+.portfolio-cue.is-hidden,
+.experience-cue.is-hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-50%) translateY(14px);
@@ -363,14 +374,16 @@ h3 {
 }
 
 .journey-cue span,
-.portfolio-cue span {
+.portfolio-cue span,
+.experience-cue span {
   font-size: 12px;
   font-weight: 850;
   letter-spacing: 0.06em;
 }
 
 .journey-cue i,
-.portfolio-cue i {
+.portfolio-cue i,
+.experience-cue i {
   position: relative;
   width: 2px;
   height: 26px;
@@ -382,7 +395,9 @@ h3 {
 .journey-cue i::before,
 .journey-cue i::after,
 .portfolio-cue i::before,
-.portfolio-cue i::after {
+.portfolio-cue i::after,
+.experience-cue i::before,
+.experience-cue i::after {
   position: absolute;
   bottom: 0;
   width: 12px;
@@ -393,13 +408,15 @@ h3 {
 }
 
 .journey-cue i::before,
-.portfolio-cue i::before {
+.portfolio-cue i::before,
+.experience-cue i::before {
   left: -9px;
   transform: rotate(45deg);
 }
 
 .journey-cue i::after,
-.portfolio-cue i::after {
+.portfolio-cue i::after,
+.experience-cue i::after {
   right: -9px;
   transform: rotate(-45deg);
 }
@@ -1507,6 +1524,392 @@ h3 {
   margin-top: 4px;
 }
 
+.changli-experience-view {
+  gap: 24px;
+}
+
+.changli-experience-view .detail-heading {
+  max-width: 940px;
+  text-align: left;
+}
+
+.changli-experience-view .detail-heading h2 {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  margin: 14px 0 22px;
+  text-align: left;
+}
+
+.changli-experience-view .detail-heading h2 span {
+  width: fit-content;
+}
+
+.changli-experience-view .detail-heading > p:last-of-type {
+  margin: 0;
+}
+
+.changli-outcome {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(70, 160, 255, 0.2), transparent 17rem),
+    linear-gradient(135deg, #111317, #252a34);
+  box-shadow: 0 22px 60px rgba(19, 26, 38, 0.2);
+  color: #fff;
+}
+
+.changli-outcome > div {
+  display: flex;
+  min-height: 188px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22px clamp(24px, 3vw, 34px);
+}
+
+.changli-outcome > div:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.changli-outcome .eyebrow {
+  color: #78bdff;
+}
+
+.changli-outcome > div:first-child > strong {
+  margin: 8px 0 6px;
+  color: #fff;
+  font-size: clamp(62px, 8vw, 96px);
+  line-height: 0.9;
+}
+
+.changli-outcome > div:first-child > span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.changli-ranking span {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.changli-ranking strong {
+  width: max-content;
+  margin: 6px 0 12px;
+  color: #fff;
+  font-size: clamp(34px, 4.2vw, 52px);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.changli-ranking p {
+  max-width: 390px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.changli-growth-section {
+  overflow: visible;
+}
+
+.changli-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 14px;
+}
+
+.changli-analysis-grid > * {
+  min-width: 0;
+  height: 100%;
+}
+
+.changli-growth-section,
+.changli-funnel-panel,
+.changli-comparison {
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 26px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(247, 250, 255, 0.68)),
+    var(--surface-strong);
+  box-shadow: 0 18px 50px rgba(22, 35, 55, 0.08), var(--glass-shadow);
+  padding: 18px;
+}
+
+.changli-growth-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.changli-funnel-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.changli-analysis-grid .changli-chart-heading {
+  min-height: 72px;
+  margin-bottom: 14px;
+}
+
+.changli-content-funnel {
+  display: grid;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  justify-items: center;
+  gap: 5px;
+  height: 224px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.changli-content-funnel li {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 3px 8px;
+  width: var(--funnel-width);
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 12px;
+  background: linear-gradient(100deg, rgba(0, 113, 227, 0.96), rgba(87, 169, 250, 0.8));
+  box-shadow: 0 12px 28px rgba(0, 113, 227, 0.13);
+  color: #fff;
+  padding: 8px 11px;
+}
+
+.changli-content-funnel li:nth-child(1) {
+  --funnel-width: 100%;
+}
+
+.changli-content-funnel li:nth-child(2) {
+  --funnel-width: 90%;
+}
+
+.changli-content-funnel li:nth-child(3) {
+  --funnel-width: 80%;
+}
+
+.changli-content-funnel li:nth-child(4) {
+  --funnel-width: 70%;
+}
+
+.changli-content-funnel span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.changli-content-funnel strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.changli-content-funnel p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.changli-chart-heading {
+  margin-bottom: 14px;
+}
+
+.changli-chart-heading h3 {
+  margin: 7px 0 0;
+  color: var(--text);
+  font-size: clamp(21px, 2vw, 27px);
+}
+
+.changli-chart-heading > p:last-child {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.funnel-stage {
+  display: flex;
+  min-height: 0;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline: auto;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(0, 113, 227, 0.96), rgba(68, 156, 246, 0.82));
+  color: #fff;
+  padding: 9px 14px;
+}
+
+.changli-kol-funnel {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 5px;
+  height: 224px;
+}
+
+.changli-kol-funnel .funnel-stage {
+  height: 100%;
+}
+
+.funnel-stage-wide {
+  width: 100%;
+}
+
+.funnel-stage-mid {
+  width: 80%;
+}
+
+.funnel-stage-small {
+  width: 60%;
+}
+
+.funnel-stage span {
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.funnel-stage strong {
+  font-size: 20px;
+}
+
+.changli-comparison {
+  display: grid;
+  align-content: start;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 0;
+}
+
+.comparison-row + .comparison-row {
+  border-top: 1px solid rgba(29, 29, 31, 0.08);
+}
+
+.comparison-row div:first-child {
+  display: grid;
+  gap: 4px;
+}
+
+.comparison-row strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.comparison-row span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.comparison-track {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.1);
+}
+
+.comparison-track i {
+  display: block;
+  width: var(--bar-value);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), #6eb7ff);
+}
+
+.comparison-row b {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--accent);
+  font-size: 17px;
+  text-align: right;
+}
+
+.changli-system-section {
+  overflow: visible;
+}
+
+.changli-system {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.changli-system article {
+  position: relative;
+  min-width: 0;
+  min-height: 164px;
+  border-radius: 18px;
+  background: rgba(242, 247, 255, 0.78);
+  padding: 17px;
+}
+
+.changli-system article:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  z-index: 2;
+  color: var(--accent);
+  content: "›";
+  font-size: 21px;
+  transform: translateY(-50%);
+}
+
+.changli-system span {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.changli-system strong {
+  display: block;
+  margin: 23px 0 8px;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.changli-system p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.changli-experience-view .portfolio-responsibilities article {
+  min-width: 0;
+  padding: 24px;
+}
+
+.changli-experience-view .portfolio-responsibilities article:last-child {
+  grid-column: auto;
+}
+
+.changli-experience-view .portfolio-responsibilities h4 {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.changli-experience-view .portfolio-responsibilities p {
+  font-size: 15px;
+  line-height: 1.82;
+}
+
 .redbook-experience-view {
   gap: 18px;
 }
@@ -1951,6 +2354,18 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .changli-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .changli-system {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .changli-system article:nth-child(3)::after {
+    display: none;
+  }
+
   .portfolio-metrics {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2055,6 +2470,61 @@ a:focus-visible {
     min-height: 0;
   }
 
+  .changli-outcome {
+    grid-template-columns: 1fr;
+  }
+
+  .changli-outcome > div {
+    min-height: 150px;
+  }
+
+  .changli-outcome > div:first-child {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .changli-content-funnel li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    width: 100%;
+    padding: 16px 18px;
+  }
+
+  .changli-content-funnel p {
+    grid-column: auto;
+    margin: 0;
+  }
+
+  .comparison-row {
+    grid-template-columns: 1fr 54px;
+  }
+
+  .comparison-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .comparison-row b {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .changli-system {
+    grid-template-columns: 1fr;
+  }
+
+  .changli-system article {
+    min-height: 130px;
+  }
+
+  .changli-system article:not(:last-child)::after {
+    display: none;
+  }
+
+  .changli-experience-view .portfolio-responsibilities {
+    grid-template-columns: 1fr;
+  }
+
   .portfolio-hero {
     grid-template-columns: 1fr;
   }
@@ -2146,7 +2616,8 @@ a:focus-visible {
   }
 
   .journey-cue,
-  .portfolio-cue {
+  .portfolio-cue,
+  .experience-cue {
     width: 96px;
     min-height: 82px;
     border-radius: 20px;

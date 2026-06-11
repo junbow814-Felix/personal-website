@@ -16,6 +16,7 @@ const journeyCue = document.querySelector(".journey-cue");
 const timelineBlock = document.querySelector("#timeline");
 const portfolioCue = document.querySelector(".portfolio-cue");
 const portfolioMedia = document.querySelector("#meitu-media");
+const experienceCue = document.querySelector(".experience-cue");
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxTriggers = document.querySelectorAll("[data-lightbox-src]");
@@ -83,7 +84,22 @@ function updateJourneyCue() {
     const shouldHide = !portfolioIsActive || mediaTop < window.innerHeight * 0.64;
     portfolioCue.classList.toggle("is-hidden", shouldHide);
   }
+
+  if (experienceCue) {
+    const filledExperienceNames = new Set(["kawasaki", "changli", "redbook", "meitu"]);
+    const activeExperienceView = Array.from(experienceViews).find((view) => !view.hidden);
+    const isFilledExperience = filledExperienceNames.has(activeExperienceView?.dataset.experienceView);
+    const remainingScroll = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
+    experienceCue.classList.toggle("is-hidden", !isFilledExperience || remainingScroll < 180);
+  }
 }
+
+experienceCue?.addEventListener("click", () => {
+  window.scrollBy({
+    top: Math.max(window.innerHeight * 0.72, 420),
+    behavior: "smooth",
+  });
+});
 
 function showExperienceView(viewName, options = {}) {
   const hasView = Array.from(experienceViews).some((view) => view.dataset.experienceView === viewName);
