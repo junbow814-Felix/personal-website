@@ -7,9 +7,19 @@ const revealItems = document.querySelectorAll(".reveal");
 const timelineItems = document.querySelectorAll(".growth-timeline li");
 const experienceButtons = document.querySelectorAll("[data-experience-target]");
 const experienceBackButtons = document.querySelectorAll("[data-experience-back]");
+const experienceReturnButtons = document.querySelectorAll("[data-experience-return]");
+const returnTabButtons = document.querySelectorAll("[data-return-tab]");
+const openTabButtons = document.querySelectorAll("[data-open-tab]");
+const openExperienceButtons = document.querySelectorAll("[data-open-experience]");
 const experienceViews = document.querySelectorAll("[data-experience-view]");
 const journeyCue = document.querySelector(".journey-cue");
 const timelineBlock = document.querySelector("#timeline");
+const portfolioCue = document.querySelector(".portfolio-cue");
+const portfolioMedia = document.querySelector("#meitu-media");
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImage = document.querySelector("[data-lightbox-image]");
+const lightboxTriggers = document.querySelectorAll("[data-lightbox-src]");
+const lightboxCloseButton = document.querySelector("[data-lightbox-close]");
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
@@ -50,18 +60,29 @@ function setActiveTab(button) {
     const isActive = panel.id === targetId;
     panel.classList.toggle("active", isActive);
     panel.hidden = !isActive;
+    if (isActive) {
+      panel.querySelectorAll(".reveal").forEach((item) => item.classList.add("visible"));
+    }
   });
 
   updateJourneyCue();
 }
 
 function updateJourneyCue() {
-  if (!journeyCue || !timelineBlock) return;
+  if (journeyCue && timelineBlock) {
+    const overviewIsActive = document.querySelector("#panel-overview")?.classList.contains("active");
+    const timelineTop = timelineBlock.getBoundingClientRect().top;
+    const shouldHide = !overviewIsActive || timelineTop < window.innerHeight * 0.48;
+    journeyCue.classList.toggle("is-hidden", shouldHide);
+  }
 
-  const overviewIsActive = document.querySelector("#panel-overview")?.classList.contains("active");
-  const timelineTop = timelineBlock.getBoundingClientRect().top;
-  const shouldHide = !overviewIsActive || timelineTop < window.innerHeight * 0.48;
-  journeyCue.classList.toggle("is-hidden", shouldHide);
+  if (portfolioCue && portfolioMedia) {
+    const portfolioView = document.querySelector('[data-experience-view="meitu-portfolio"]');
+    const portfolioIsActive = portfolioView && !portfolioView.hidden;
+    const mediaTop = portfolioMedia.getBoundingClientRect().top;
+    const shouldHide = !portfolioIsActive || mediaTop < window.innerHeight * 0.64;
+    portfolioCue.classList.toggle("is-hidden", shouldHide);
+  }
 }
 
 function showExperienceView(viewName, options = {}) {
@@ -80,6 +101,8 @@ function showExperienceView(viewName, options = {}) {
       history.pushState(null, "", nextHash);
     }
   }
+
+  updateJourneyCue();
 }
 
 function activateExperienceHash() {
@@ -109,6 +132,74 @@ experienceBackButtons.forEach((button) => {
     showExperienceView("overview");
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+});
+
+experienceReturnButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    showExperienceView(button.dataset.experienceReturn);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+returnTabButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const targetTab = document.querySelector(`#tab-${button.dataset.returnTab}`);
+    if (!targetTab) return;
+    setActiveTab(targetTab);
+    history.pushState(null, "", `#panel-${button.dataset.returnTab}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+openTabButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const targetTab = document.querySelector(`#tab-${button.dataset.openTab}`);
+    if (!targetTab) return;
+    setActiveTab(targetTab);
+    history.pushState(null, "", `#panel-${button.dataset.openTab}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+openExperienceButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const experienceTab = document.querySelector("#tab-experience");
+    if (!experienceTab) return;
+    setActiveTab(experienceTab);
+    showExperienceView(button.dataset.openExperience);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+function closeLightbox() {
+  if (!lightbox || !lightboxImage) return;
+  lightbox.hidden = true;
+  lightboxImage.src = "";
+  lightboxImage.alt = "";
+  document.body.classList.remove("lightbox-open");
+}
+
+lightboxTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    if (!lightbox || !lightboxImage) return;
+    lightboxImage.src = trigger.dataset.lightboxSrc;
+    lightboxImage.alt = trigger.dataset.lightboxAlt || "";
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+    lightboxCloseButton?.focus();
+  });
+});
+
+lightboxCloseButton?.addEventListener("click", closeLightbox);
+
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && lightbox && !lightbox.hidden) {
+    closeLightbox();
+  }
 });
 
 tabButtons.forEach((button) => {
