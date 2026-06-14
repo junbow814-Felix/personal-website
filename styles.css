@@ -1512,28 +1512,26 @@ h3 {
   overflow-wrap: anywhere;
 }
 
-.meitu-experience-view {
-  gap: 18px;
-}
-
-.meitu-experience-view .detail-heading {
-  max-width: 940px;
-}
-
 .experience-metrics {
   margin-top: 4px;
 }
 
-.changli-experience-view {
+.changli-experience-view,
+.redbook-experience-view,
+.meitu-experience-view {
   gap: 24px;
 }
 
-.changli-experience-view .detail-heading {
+.changli-experience-view .detail-heading,
+.redbook-experience-view .detail-heading,
+.meitu-experience-view .detail-heading {
   max-width: 940px;
   text-align: left;
 }
 
-.changli-experience-view .detail-heading h2 {
+.changli-experience-view .detail-heading h2,
+.redbook-experience-view .detail-heading h2,
+.meitu-experience-view .detail-heading h2 {
   display: grid;
   justify-items: start;
   gap: 14px;
@@ -1541,11 +1539,15 @@ h3 {
   text-align: left;
 }
 
-.changli-experience-view .detail-heading h2 span {
+.changli-experience-view .detail-heading h2 span,
+.redbook-experience-view .detail-heading h2 span,
+.meitu-experience-view .detail-heading h2 span {
   width: fit-content;
 }
 
-.changli-experience-view .detail-heading > p:last-of-type {
+.changli-experience-view .detail-heading > p:last-of-type,
+.redbook-experience-view .detail-heading > p:last-of-type,
+.meitu-experience-view .detail-heading > p:last-of-type {
   margin: 0;
 }
 
@@ -1910,14 +1912,6 @@ h3 {
   line-height: 1.82;
 }
 
-.redbook-experience-view {
-  gap: 18px;
-}
-
-.redbook-experience-view .detail-heading {
-  max-width: 940px;
-}
-
 .redbook-metrics {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
@@ -2207,6 +2201,7 @@ h3 {
   font-size: 13px;
   font-weight: 850;
   padding: 0 17px;
+  text-decoration: none;
 }
 
 .case-link-button b {

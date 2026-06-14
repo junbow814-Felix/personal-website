@@ -123,16 +123,21 @@ function showExperienceView(viewName, options = {}) {
 
 function activateExperienceHash() {
   const experienceTab = document.querySelector("#tab-experience");
-  if (!experienceTab) return;
 
-  if (window.location.hash.startsWith("#experience-")) {
+  if (experienceTab && window.location.hash.startsWith("#experience-")) {
     setActiveTab(experienceTab);
     showExperienceView(window.location.hash.replace("#experience-", ""), { skipHistory: true });
+    return;
   }
 
-  if (window.location.hash === "#panel-experience") {
-    setActiveTab(experienceTab);
-    showExperienceView("overview", { skipHistory: true });
+  if (window.location.hash.startsWith("#panel-")) {
+    const tabName = window.location.hash.replace("#panel-", "");
+    const targetTab = document.querySelector(`#tab-${tabName}`);
+    if (!targetTab) return;
+    setActiveTab(targetTab);
+    if (tabName === "experience") {
+      showExperienceView("overview", { skipHistory: true });
+    }
   }
 }
 
