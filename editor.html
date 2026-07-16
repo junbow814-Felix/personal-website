@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Felix 网站内容编辑器</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f7fb;
+        --panel: rgba(255, 255, 255, 0.8);
+        --line: rgba(29, 29, 31, 0.1);
+        --text: #1d1d1f;
+        --muted: #6e6e73;
+        --accent: #0071e3;
+        --shadow: 0 18px 60px rgba(22, 35, 55, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 4%, rgba(80, 210, 255, 0.18), transparent 28rem),
+          radial-gradient(circle at 92% 0%, rgba(126, 87, 255, 0.12), transparent 30rem),
+          var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(245, 247, 251, 0.82);
+        padding: 14px 24px;
+        backdrop-filter: blur(22px);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 4px;
+        font-size: 22px;
+        line-height: 1.2;
+      }
+
+      header p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(420px, 560px) minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px;
+      }
+
+      .toolbar,
+      .editor-panel,
+      .preview-panel {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(24px);
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+        border-radius: 999px;
+        box-shadow: 0 12px 40px rgba(22, 35, 55, 0.08);
+        padding: 8px;
+      }
+
+      button {
+        min-height: 38px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(29, 29, 31, 0.08);
+        color: var(--text);
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 0 15px;
+      }
+
+      button.primary {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      .editor-panel {
+        max-height: calc(100vh - 108px);
+        overflow: auto;
+        padding: 18px;
+      }
+
+      .preview-panel {
+        overflow: hidden;
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: calc(100vh - 108px);
+        border: 0;
+        background: #fff;
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.58);
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+
+      summary {
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 850;
+        list-style: none;
+        padding: 16px;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .section-body {
+        display: grid;
+        gap: 14px;
+        border-top: 1px solid var(--line);
+        padding: 16px;
+      }
+
+      .group {
+        display: grid;
+        gap: 10px;
+        border: 1px solid rgba(29, 29, 31, 0.08);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.58);
+        padding: 14px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      label {
+        display: grid;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 780;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid rgba(29, 29, 31, 0.12);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+        line-height: 1.5;
+        outline: none;
+        padding: 10px 11px;
+      }
+
+      textarea {
+        min-height: 74px;
+        resize: vertical;
+      }
+
+      .status {
+        min-height: 20px;
+        color: var(--muted);
+        font-size: 12px;
+        padding: 0 6px;
+      }
+
+      .field-note {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 1100px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        .editor-panel,
+        iframe {
+          max-height: none;
+          height: 760px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Felix 网站内容编辑器</h1>
+        <p>编辑器只用于修改文案；边距和字号已恢复为固定设计，不再开放参数设置。</p>
+      </div>
+      <div class="toolbar">
+        <button class="primary" type="button" data-action="preview">临时预览</button>
+        <button type="button" data-preview-hash="#top">预览概览</button>
+        <button type="button" data-preview-hash="#panel-skills">预览能力</button>
+        <button type="button" data-preview-hash="#panel-experience">预览经历</button>
+        <button type="button" data-preview-hash="#panel-contact">预览联系</button>
+        <button type="button" data-action="save-content">保存文案到网站文件</button>
+        <button type="button" data-action="open-site">打开首页</button>
+        <button type="button" data-action="download-content">下载文案配置</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="editor-panel" aria-label="编辑区域">
+        <p class="status" data-status>正在读取配置...</p>
+        <p class="field-note">
+          右侧预览会显示蓝色编辑标记，标记文字就是左侧编辑器里的对应位置。先选“预览能力 / 经历”等页面，再根据标记找到左侧同名模块修改。
+        </p>
+        <form id="editor-form"></form>
+      </section>
+      <section class="preview-panel" aria-label="预览区域">
+        <iframe title="网站预览" src="index.html?preview=editor#top"></iframe>
+      </section>
+    </main>
+
+    <script src="editor.js?v=editor-content-only-v4"></script>
+  </body>
+</html>

@@ -86,7 +86,7 @@ function updateJourneyCue() {
   }
 
   if (experienceCue) {
-    const filledExperienceNames = new Set(["kawasaki", "changli", "redbook", "meitu"]);
+    const filledExperienceNames = new Set(["kawasaki", "kawasaki-portfolio", "changli-portfolio", "changli", "redbook-portfolio", "redbook", "meitu"]);
     const activeExperienceView = Array.from(experienceViews).find((view) => !view.hidden);
     const isFilledExperience = filledExperienceNames.has(activeExperienceView?.dataset.experienceView);
     const remainingScroll = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;

@@ -868,16 +868,41 @@ h3 {
   max-width: 860px;
 }
 
-#panel-contact h2 {
-  max-width: 720px;
-  font-size: clamp(30px, 4vw, 52px);
-  line-height: 1.08;
+#panel-skills .screen-heading,
+#panel-works .screen-heading,
+#panel-contact .screen-heading {
+  max-width: 780px;
 }
 
+#panel-skills .screen-heading h2,
+#panel-works .screen-heading h2 {
+  max-width: 780px;
+  margin-bottom: 22px;
+  font-size: clamp(28px, 3.45vw, 44px);
+  line-height: 1.16;
+}
+
+#panel-skills .content-screen {
+  gap: 22px;
+}
+
+#panel-contact .screen-heading h2 {
+  max-width: 780px;
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.04;
+}
+
+#panel-skills .screen-lede,
+#panel-works .screen-lede,
 #panel-contact .screen-lede {
-  max-width: 680px;
-  font-size: clamp(16px, 1.45vw, 18px);
-  line-height: 1.68;
+  max-width: 720px;
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+#panel-skills .screen-lede {
+  margin-bottom: 0;
 }
 
 .pill-grid span {
@@ -1072,7 +1097,7 @@ h3 {
   display: grid;
   gap: 8px;
   min-height: 170px;
-  align-content: start;
+  align-content: center;
   border: 1px solid rgba(255, 255, 255, 0.78);
   border-radius: 22px;
   background:
@@ -1130,7 +1155,9 @@ h3 {
 }
 
 .experience-overview .screen-heading h2 {
-  font-size: clamp(32px, 4vw, 50px);
+  margin-bottom: 20px;
+  font-size: clamp(28px, 3.45vw, 44px);
+  line-height: 1.16;
 }
 
 .experience-overview .screen-lede {
@@ -1207,11 +1234,15 @@ h3 {
 }
 
 .back-button {
+  position: sticky;
+  top: 118px;
+  z-index: 25;
   width: fit-content;
   min-height: 38px;
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px);
   box-shadow: var(--glass-shadow);
   color: var(--accent);
   cursor: pointer;
@@ -1347,6 +1378,31 @@ h3 {
   color: var(--accent);
 }
 
+.portfolio-hero-summary {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.portfolio-tags span {
+  border: 1px solid rgba(0, 113, 227, 0.12);
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.07);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 850;
+  padding: 7px 10px;
+}
+
 .portfolio-brand-mark {
   position: relative;
   z-index: 1;
@@ -1391,6 +1447,9 @@ h3 {
 }
 
 .portfolio-metrics strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--text);
   font-size: clamp(27px, 3vw, 40px);
   line-height: 1;
@@ -1424,6 +1483,24 @@ h3 {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.7;
+}
+
+.case-highlight {
+  color: #ff2442;
+  font-style: normal;
+  font-weight: 850;
+  background: transparent;
+}
+
+.case-blue {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 850;
+  background: transparent;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .portfolio-process {
@@ -1581,6 +1658,18 @@ h3 {
   color: #78bdff;
 }
 
+.redbook-outcome {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(255, 36, 66, 0.18), transparent 17rem),
+    linear-gradient(135deg, #121316, #2a2027);
+}
+
+.meitu-outcome {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(255, 76, 139, 0.2), transparent 17rem),
+    linear-gradient(135deg, #121316, #2b2230);
+}
+
 .changli-outcome > div:first-child > strong {
   margin: 8px 0 6px;
   color: #fff;
@@ -1656,8 +1745,11 @@ h3 {
 }
 
 .changli-analysis-grid .changli-chart-heading {
+  display: grid;
+  justify-items: center;
   min-height: 72px;
   margin-bottom: 14px;
+  text-align: center;
 }
 
 .changli-content-funnel {
@@ -1893,6 +1985,593 @@ h3 {
   line-height: 1.6;
 }
 
+.portfolio-hero-kawasaki::after {
+  background: rgba(0, 113, 227, 0.08);
+}
+
+.portfolio-hero-kawasaki .portfolio-brand-mark img {
+  width: 66px;
+  height: 66px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.portfolio-hero-changli::after {
+  background: rgba(0, 113, 227, 0.08);
+}
+
+.portfolio-hero-changli .portfolio-brand-mark img {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.portfolio-hero-changli h2 {
+  max-width: 920px;
+  font-size: clamp(42px, 5.2vw, 72px);
+  line-height: 1.18;
+}
+
+.portfolio-hero-changli h2 span:last-child {
+  white-space: nowrap;
+}
+
+.portfolio-hero-changli .portfolio-hero-summary {
+  max-width: 900px;
+}
+
+.portfolio-hero-redbook::after {
+  background: rgba(255, 36, 66, 0.1);
+}
+
+.portfolio-hero-redbook .portfolio-brand-mark img {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  object-fit: contain;
+  background: #ff2442;
+}
+
+.portfolio-hero-redbook h2 {
+  max-width: 1120px;
+  font-size: clamp(38px, 4.2vw, 58px);
+  line-height: 1.28;
+}
+
+.portfolio-hero-redbook h2 span:last-child {
+  color: #ff2442;
+  white-space: nowrap;
+}
+
+.redbook-portfolio-view .portfolio-tags span {
+  border-color: rgba(255, 36, 66, 0.18);
+  background: rgba(255, 36, 66, 0.055);
+  color: #ff2442;
+}
+
+.kawasaki-portfolio-view .portfolio-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.redbook-portfolio-view .redbook-portfolio-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.kawasaki-portfolio-view .metric-up strong::after,
+.kawasaki-portfolio-view .metric-down strong::after {
+  display: inline-grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.kawasaki-portfolio-view .metric-up strong::after {
+  background: #ff3b30;
+  content: "↑";
+}
+
+.kawasaki-portfolio-view .metric-down strong::after {
+  background: #34c759;
+  content: "↓";
+}
+
+.kawasaki-case-brief,
+.kawasaki-case-section {
+  overflow: visible;
+}
+
+.kawasaki-portfolio-view .portfolio-section-heading,
+.kawasaki-portfolio-view .kawasaki-brief-grid,
+.kawasaki-portfolio-view .kawasaki-narrative-grid,
+.kawasaki-portfolio-view .kawasaki-role-list,
+.kawasaki-portfolio-view .kawasaki-challenge-grid,
+.kawasaki-portfolio-view .kawasaki-strategy-grid,
+.kawasaki-portfolio-view .kawasaki-execution-grid,
+.kawasaki-portfolio-view .kawasaki-image-row,
+.kawasaki-portfolio-view .changli-screenshot-row,
+.kawasaki-portfolio-view .kawasaki-review-chain,
+.kawasaki-portfolio-view .kawasaki-highlight-grid {
+  width: min(100%, 1010px);
+  max-width: 1010px;
+  margin-inline: auto;
+}
+
+.kawasaki-portfolio-view .portfolio-section-heading {
+  margin-bottom: 22px;
+}
+
+.kawasaki-portfolio-view .kawasaki-case-section {
+  padding-block: clamp(32px, 4.6vw, 52px);
+}
+
+.kawasaki-brief-grid,
+.kawasaki-narrative-grid,
+.kawasaki-role-list,
+.kawasaki-challenge-grid,
+.kawasaki-strategy-grid,
+.kawasaki-highlight-grid,
+.kawasaki-image-placeholders {
+  display: grid;
+  gap: 12px;
+}
+
+.kawasaki-brief-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.kawasaki-narrative-grid,
+.kawasaki-highlight-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.kawasaki-challenge-grid,
+.kawasaki-image-placeholders {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.kawasaki-strategy-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.kawasaki-brief-grid article,
+.kawasaki-narrative-grid article,
+.kawasaki-role-list article,
+.kawasaki-challenge-grid article,
+.kawasaki-strategy-grid article,
+.kawasaki-highlight-grid article,
+.kawasaki-image-placeholders article {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 20px;
+  background: rgba(247, 250, 255, 0.74);
+  padding: 20px;
+}
+
+.kawasaki-brief-grid article {
+  min-height: 118px;
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.kawasaki-role-list {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.kawasaki-role-list article {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  min-height: 76px;
+  padding-block: 16px;
+}
+
+.kawasaki-brief-grid article span {
+  min-height: 16px;
+}
+
+.kawasaki-narrative-grid article,
+.kawasaki-highlight-grid article {
+  min-height: 210px;
+}
+
+.kawasaki-challenge-grid article {
+  min-height: 244px;
+}
+
+.kawasaki-strategy-grid article {
+  min-height: 190px;
+}
+
+.kawasaki-brief-grid span,
+.kawasaki-narrative-grid span,
+.kawasaki-role-list span,
+.kawasaki-challenge-grid span,
+.kawasaki-strategy-grid span,
+.kawasaki-highlight-grid span,
+.kawasaki-image-placeholders span {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.kawasaki-brief-grid strong,
+.kawasaki-narrative-grid h4,
+.kawasaki-challenge-grid strong,
+.kawasaki-strategy-grid h4,
+.kawasaki-highlight-grid h4,
+.kawasaki-image-placeholders strong {
+  display: block;
+  margin: 10px 0 8px;
+  color: var(--text);
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.32;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+.kawasaki-challenge-grid strong {
+  min-height: 56px;
+  font-size: clamp(16px, 1.18vw, 18px);
+  line-height: 1.36;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+  word-break: normal;
+}
+
+.kawasaki-brief-grid strong {
+  margin: 0;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.kawasaki-narrative-grid p,
+.kawasaki-role-list p,
+.kawasaki-challenge-grid p,
+.kawasaki-strategy-grid p,
+.kawasaki-highlight-grid p,
+.kawasaki-image-placeholders p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.68;
+  word-break: normal;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+
+.kawasaki-role-list p {
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.6;
+}
+
+.kawasaki-bullet-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kawasaki-bullet-list li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  line-height: 1.5;
+}
+
+.kawasaki-bullet-list li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--accent);
+  content: "";
+}
+
+.kawasaki-execution-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.kawasaki-execution-grid article:last-child {
+  grid-column: auto;
+}
+
+.kawasaki-image-row + .kawasaki-image-row {
+  margin-top: 24px;
+}
+
+.kawasaki-image-row h4 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.25;
+}
+
+.kawasaki-review-chain {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 0;
+  margin: 18px auto 34px;
+  padding: 0;
+  list-style: none;
+}
+
+.kawasaki-review-chain::before {
+  position: absolute;
+  top: 24px;
+  right: 2%;
+  left: 2%;
+  height: 1.5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(0, 113, 227, 0.1), rgba(0, 113, 227, 0.68), rgba(0, 113, 227, 0.1));
+  content: "";
+}
+
+.kawasaki-review-chain li {
+  position: relative;
+  display: grid;
+  min-height: 142px;
+  align-content: start;
+  justify-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.kawasaki-review-chain li::before {
+  z-index: 1;
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin-top: 16px;
+  border: 4px solid rgba(222, 239, 255, 0.96);
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 8px 18px rgba(0, 113, 227, 0.16);
+  content: "";
+}
+
+.kawasaki-review-chain li:not(:last-child)::after {
+  display: none;
+}
+
+.kawasaki-review-chain span {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.kawasaki-review-chain strong {
+  color: var(--text);
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.kawasaki-review-chain p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.58;
+  word-break: normal;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+
+.kawasaki-image-placeholders article {
+  display: grid;
+  min-height: 230px;
+  align-content: center;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(236, 246, 255, 0.72)),
+    repeating-linear-gradient(135deg, rgba(0, 113, 227, 0.06) 0 1px, transparent 1px 14px);
+}
+
+.kawasaki-image-placeholders article::before {
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed rgba(0, 113, 227, 0.24);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.38);
+  content: "";
+}
+
+.kawasaki-note-gallery {
+  align-items: stretch;
+}
+
+.kawasaki-note-card {
+  display: grid;
+  min-width: 0;
+  min-height: 340px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(236, 246, 255, 0.7)),
+    var(--surface-strong);
+  box-shadow: 0 18px 42px rgba(16, 24, 40, 0.08);
+  cursor: zoom-in;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.kawasaki-note-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 430px;
+  border-radius: 14px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.kawasaki-note-card:hover {
+  transform: translateY(-2px);
+}
+
+.changli-portfolio-metrics article strong {
+  font-size: clamp(25px, 2.6vw, 36px);
+}
+
+.changli-method-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.changli-iteration-chain {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.changli-screenshot-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.changli-screenshot-row article {
+  position: relative;
+  min-height: 260px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.72)),
+    repeating-linear-gradient(135deg, rgba(0, 113, 227, 0.055) 0 1px, transparent 1px 14px);
+  overflow: hidden;
+}
+
+.changli-screenshot-row article:has(img) {
+  min-height: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.changli-screenshot-row article img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 0.66;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.changli-screenshot-row article::before {
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed rgba(0, 113, 227, 0.24);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.36);
+  content: "";
+}
+
+.changli-screenshot-row article:has(img)::before,
+.changli-screenshot-row article:has(img)::after {
+  display: none;
+}
+
+.changli-screenshot-row article::after {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(0, 113, 227, 0.48);
+  content: "待补充";
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.changli-shot-caption {
+  max-width: none;
+  white-space: nowrap;
+}
+
+.changli-single-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.changli-single-metrics article strong {
+  font-size: clamp(21px, 2.1vw, 30px);
+  line-height: 1.18;
+}
+
+.changli-single-metrics article:nth-child(n + 3) strong {
+  max-width: 9em;
+  font-size: clamp(18px, 1.55vw, 24px);
+  line-height: 1.28;
+  letter-spacing: 0;
+}
+
+.kawasaki-outcome > div:first-child > strong {
+  font-size: clamp(52px, 6.7vw, 82px);
+}
+
+.kawasaki-stack {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  height: 224px;
+}
+
+.kawasaki-stack div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(0, 113, 227, 0.96), rgba(83, 166, 250, 0.82));
+  box-shadow: 0 12px 28px rgba(0, 113, 227, 0.13);
+  color: #fff;
+  padding: 10px 15px;
+}
+
+.kawasaki-stack div:nth-child(2) {
+  width: 84%;
+  margin-inline: auto;
+}
+
+.kawasaki-stack div:nth-child(3) {
+  width: 68%;
+  margin-inline: auto;
+}
+
+.kawasaki-stack span {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.kawasaki-stack strong {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.kawasaki-content-path strong {
+  font-size: clamp(15px, 1.35vw, 18px);
+}
+
+.kawasaki-system-section .changli-system strong {
+  margin-top: 18px;
+}
+
 .changli-experience-view .portfolio-responsibilities article {
   min-width: 0;
   padding: 24px;
@@ -1923,6 +2602,53 @@ h3 {
 
 .redbook-metrics strong {
   font-size: clamp(24px, 2.7vw, 35px);
+}
+
+.redbook-portfolio-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.redbook-portfolio-metrics article {
+  min-height: 120px;
+  padding: 17px;
+}
+
+.redbook-portfolio-metrics strong {
+  font-size: clamp(23px, 2.5vw, 34px);
+}
+
+.redbook-brief-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.redbook-role-list,
+.redbook-action-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.redbook-action-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.redbook-action-grid article {
+  min-width: 0;
+}
+
+.redbook-action-grid article:last-child {
+  grid-column: auto;
+}
+
+.redbook-growth-chain {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.redbook-case-section .case-highlight {
+  color: #ff2442;
+}
+
+.redbook-case-section .case-blue {
+  color: #ff2442;
 }
 
 .redbook-experience-view .portfolio-responsibilities article {
@@ -2160,29 +2886,15 @@ h3 {
   margin-bottom: 6px;
 }
 
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.case-grid article.wide {
-  grid-column: span 2;
-}
-
-.case-grid article {
-  min-height: 210px;
-}
-
-.case-grid span {
-  display: inline-flex;
-  margin-bottom: 18px;
-}
-
 .published-case {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(238, 246, 255, 0.76)),
     var(--surface-strong);
+}
+
+a.experience-card {
+  color: inherit;
+  text-decoration: none;
 }
 
 .case-link-button {
@@ -2191,7 +2903,7 @@ h3 {
   gap: 8px;
   width: fit-content;
   min-height: 40px;
-  margin-top: 14px;
+  margin-top: auto;
   border: 0;
   border-radius: 999px;
   background: var(--accent);
@@ -2363,6 +3075,48 @@ a:focus-visible {
 
   .portfolio-metrics {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kawasaki-portfolio-view .portfolio-metrics,
+  .kawasaki-brief-grid,
+  .kawasaki-challenge-grid,
+  .kawasaki-strategy-grid,
+  .kawasaki-image-placeholders,
+  .redbook-brief-grid,
+  .redbook-role-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .redbook-portfolio-view .redbook-portfolio-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .redbook-action-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .kawasaki-review-chain {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 18px;
+  }
+
+  .kawasaki-review-chain li:nth-child(4)::after {
+    display: none;
+  }
+
+  .kawasaki-narrative-grid,
+  .kawasaki-highlight-grid,
+  .changli-method-grid,
+  .kawasaki-execution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .changli-screenshot-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kawasaki-review-chain::before {
+    display: none;
   }
 
   .portfolio-process {
@@ -2542,6 +3296,51 @@ a:focus-visible {
   .portfolio-process,
   .portfolio-responsibilities {
     grid-template-columns: 1fr;
+  }
+
+  .kawasaki-portfolio-view .portfolio-metrics,
+  .kawasaki-brief-grid,
+  .kawasaki-challenge-grid,
+  .kawasaki-strategy-grid,
+  .kawasaki-image-placeholders,
+  .kawasaki-execution-grid,
+  .redbook-portfolio-metrics,
+  .redbook-brief-grid,
+  .redbook-role-list,
+  .redbook-action-grid,
+  .redbook-growth-chain {
+    grid-template-columns: 1fr;
+  }
+
+  .kawasaki-review-chain {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .changli-screenshot-row {
+    grid-template-columns: 1fr;
+  }
+
+  .kawasaki-review-chain li {
+    min-height: 0;
+    justify-items: start;
+    padding-left: 34px;
+    text-align: left;
+  }
+
+  .kawasaki-review-chain li::before {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    margin-top: 0;
+  }
+
+  .kawasaki-review-chain li::after {
+    display: none;
+  }
+
+  .portfolio-tags {
+    gap: 6px;
   }
 
   .portfolio-metrics article {
